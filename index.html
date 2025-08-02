@@ -429,6 +429,157 @@
             color: #64748b;
             transition: color 0.3s ease;
         }
+        /* Mobile Phones & Accessories Section */
+#products {
+    background: #f1f5f9;
+    padding: 80px 0;
+}
+
+.products-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background: #e2e8f0;
+    color: #334155;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.product-img {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img img {
+    transform: scale(1.1);
+}
+
+.product-content {
+    padding: 20px;
+}
+
+.product-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.product-rating {
+    color: var(--secondary);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.product-rating span {
+    color: #64748b;
+    margin-left: 5px;
+}
+
+.product-price {
+    margin-bottom: 15px;
+}
+
+.current-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.original-price {
+    font-size: 1rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.product-features span {
+    display: flex;
+    align-items: center;
+    color: #64748b;
+}
+
+.product-features i {
+    margin-right: 5px;
+    color: var(--primary);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
         
         /* Testimonials Section */
         #testimonials {
@@ -1045,6 +1196,194 @@
         </div>
     </section>
 
+    <!-- Mobile Phones & Accessories Section -->
+<section id="products" class="bg-gray-100">
+    <div class="container">
+        <div class="section-title">
+            <h2>Mobile Phones & Accessories</h2>
+            <p>Quality devices and accessories available for purchase. All products come with warranty and after-sales support.</p>
+        </div>
+
+        <!-- Products Filter -->
+        <div class="products-filter">
+            <button class="filter-btn active" data-filter="all">All Products</button>
+            <button class="filter-btn" data-filter="phones">Smartphones</button>
+            <button class="filter-btn" data-filter="accessories">Accessories</button>
+            <button class="filter-btn" data-filter="refurbished">Refurbished</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="phones">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1967&q=80" alt="Samsung Galaxy S23">
+                </div>
+                <div class="product-content">
+                    <h3>Samsung Galaxy S23</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(24)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">ZMW 8,999</span>
+                        <span class="original-price">ZMW 9,499</span>
+                    </div>
+                    <div class="product-features">
+                        <span><i class="fas fa-mobile-alt"></i> 128GB Storage</span>
+                        <span><i class="fas fa-camera"></i> 50MP Camera</span>
+                    </div>
+                    <a href="#contact" class="btn btn-block">Inquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-category="phones">
+                <div class="product-badge">Best Seller</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="iPhone 14">
+                </div>
+                <div class="product-content">
+                    <h3>iPhone 14</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(36)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">ZMW 10,499</span>
+                    </div>
+                    <div class="product-features">
+                        <span><i class="fas fa-mobile-alt"></i> 128GB Storage</span>
+                        <span><i class="fas fa-bolt"></i> Fast Charging</span>
+                    </div>
+                    <a href="#contact" class="btn btn-block">Inquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-category="refurbished">
+                <div class="product-badge">Refurbished</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1595941069915-4ebc5197c14a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2089&q=80" alt="iPhone 12 Pro">
+                </div>
+                <div class="product-content">
+                    <h3>iPhone 12 Pro (Refurbished)</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(18)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">ZMW 6,299</span>
+                        <span class="original-price">ZMW 7,999</span>
+                    </div>
+                    <div class="product-features">
+                        <span><i class="fas fa-mobile-alt"></i> 256GB Storage</span>
+                        <span><i class="fas fa-certificate"></i> 1 Year Warranty</span>
+                    </div>
+                    <a href="#contact" class="btn btn-block">Inquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-category="accessories">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80" alt="Wireless Earbuds">
+                </div>
+                <div class="product-content">
+                    <h3>Wireless Earbuds Pro</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(42)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">ZMW 499</span>
+                    </div>
+                    <div class="product-features">
+                        <span><i class="fas fa-headphones"></i> Noise Cancelling</span>
+                        <span><i class="fas fa-battery-full"></i> 30hrs Battery</span>
+                    </div>
+                    <a href="#contact" class="btn btn-block">Inquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-category="accessories">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Fast Charger">
+                </div>
+                <div class="product-content">
+                    <h3>65W Fast Charger</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(31)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">ZMW 349</span>
+                    </div>
+                    <div class="product-features">
+                        <span><i class="fas fa-bolt"></i> Fast Charging</span>
+                        <span><i class="fas fa-plug"></i> Multi-Device</span>
+                    </div>
+                    <a href="#contact" class="btn btn-block">Inquire Now</a>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-category="phones">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tecno Camon 20">
+                </div>
+                <div class="product-content">
+                    <h3>Tecno Camon 20 Pro</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(15)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">ZMW 3,999</span>
+                    </div>
+                    <div class="product-features">
+                        <span><i class="fas fa-mobile-alt"></i> 256GB Storage</span>
+                        <span><i class="fas fa-camera"></i> 64MP Camera</span>
+                    </div>
+                    <a href="#contact" class="btn btn-block">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- View More Button -->
+        <div class="text-center mt-50">
+            <a href="products.html" class="btn btn-secondary">View All Products</a>
+        </div>
+    </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section id="testimonials">
         <div class="container">
@@ -1345,6 +1684,28 @@
             alert('Thank you for your repair request! We will contact you shortly.');
             this.reset();
         });
+        // Product Filter
+const filterButtons = document.querySelectorAll('.filter-btn');
+const productCards = document.querySelectorAll('.product-card');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filterValue = button.getAttribute('data-filter');
+        
+        productCards.forEach(card => {
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
     </script>
 </body>
   </html>
