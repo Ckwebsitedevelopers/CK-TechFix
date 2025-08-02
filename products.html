@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Phones & Accessories - CK TechFix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .back-to-home {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            color: var(--primary-dark);
+        }
+        
+        .back-to-home i {
+            margin-right: 8px;
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 40px 0 80px;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .products-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .search-box input {
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            min-width: 250px;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            background: var(--primary-dark);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .product-badge.sale {
+            background: var(--secondary);
+        }
+        
+        .product-badge.new {
+            background: var(--primary);
+        }
+        
+        .product-badge.refurbished {
+            background: var(--success);
+        }
+        
+        .product-badge.best-seller {
+            background: var(--danger);
+        }
+        
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+        }
+        
+        .product-img img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-category {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-rating {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .product-rating span {
+            color: var(--gray);
+            margin-left: 5px;
+        }
+        
+        .product-price {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .current-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .original-price {
+            font-size: 1.1rem;
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+        
+        .discount {
+            background: #fee2e2;
+            color: #ef4444;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .product-features {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        
+        .product-features ul {
+            padding-left: 20px;
+            color: var(--gray);
+        }
+        
+        .product-features li {
+            margin-bottom: 5px;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-wishlist {
+            width: 45px;
+            padding: 0;
+            border-radius: 50%;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--light-gray);
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn.active,
+        .page-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .products-controls {
+                width: 100%;
+            }
+            
+            .search-box input {
+                min-width: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero {
+                padding: 40px 0;
+            }
+            
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="logo-text">CK <span>TechFix</span></div>
+            </a>
+            
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Mobile Phones & Accessories</h1>
+            <p>Explore our wide range of smartphones, tablets, and premium accessories at competitive prices</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <h2 class="section-title">All Products</h2>
+                <div class="products-controls">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="phones">Smartphones</button>
+                        <button class="filter-btn" data-filter="tablets">Tablets</button>
+                        <button class="filter-btn" data-filter="accessories">Accessories</button>
+                        <button class="filter-btn" data-filter="refurbished">Refurbished</button>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search products...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be generated by JavaScript -->
+            </div>
+            
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About CK TechFix</h3>
+                    <p>Professional mobile phone repair services in Lusaka, Zambia. Specializing in hardware, microsoldering, and software solutions for Android and iPhone devices.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Product Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Chargers & Cables</a></li>
+                        <li><a href="#">Cases & Covers</a></li>
+                        <li><a href="#">Screen Protectors</a></li>
+                        <li><a href="#">Audio Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+260123456789"><i class="fas fa-phone-alt"></i> +260 123 456 789</a></li>
+                        <li><a href="mailto:info@cktechfix.com"><i class="fas fa-envelope"></i> info@cktechfix.com</a></li>
+                        <li><a href="https://goo.gl/maps/..." target="_blank"><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</a></li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-6PM</li>
+                        <li><i class="fas fa-clock"></i> Sat: 9AM-3PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 CK TechFix. All Rights Reserved. | Designed by Chola Kachamba</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data with image URLs
+        const products = [
+            // Smartphones
+            {id: 1, name: "Samsung Galaxy S23", category: "phones", price: 8999, originalPrice: 9499, rating: 4.5, reviews: 24, badge: "new", features: ["128GB Storage", "50MP Camera", "5G Connectivity"], image: "Samsung Galaxy S23.jpg"},
+            {id: 2, name: "iPhone 14 Pro", category: "phones", price: 10999, originalPrice: 11999, rating: 4.8, reviews: 36, badge: "best-seller", features: ["256GB Storage", "A16 Bionic Chip", "Pro Camera System"], image: "iPhone 14 Pro.jpg"},
+                {id: 3, name: "Google Pixel 7", category: "phones", price: 7499, originalPrice: 7999, rating: 4.4, reviews: 18, badge: "sale", features: ["128GB Storage", "Tensor G2 Chip", "Advanced Camera"], image: "Google Pixel 7.jpg"},
+            {id: 4, name: "Xiaomi Redmi Note 12", category: "phones", price: 3499, originalPrice: 3999, rating: 4.2, reviews: 42, badge: "", features: ["128GB Storage", "AMOLED Display", "5000mAh Battery"], image: "Xiaomi Redmi Note 12.jpg"},
+            {id: 5, name: "OnePlus 10T", category: "phones", price: 7999, originalPrice: 8499, rating: 4.6, reviews: 29, badge: "new", features: ["256GB Storage", "Snapdragon 8+ Gen 1", "150W Charging"], image: "OnePlus 10T.jpg"},
+            {id: 6, name: "iPhone 12 (Refurbished)", category: "phones", price: 6299, originalPrice: 7999, rating: 4.3, reviews: 15, badge: "refurbished", features: ["128GB Storage", "A14 Bionic", "Ceramic Shield"], image: "iPhone 12.jpg"},
+            {id: 7, name: "Samsung Galaxy A54", category: "phones", price: 4499, originalPrice: 4999, rating: 4.1, reviews: 33, badge: "", features: ["128GB Storage", "6.4\" Display", "5000mAh Battery"], image: "Samsung Galaxy A54.jpg"},
+            {id: 8, name: "Tecno Camon 20 Pro", category: "phones", price: 3999, originalPrice: 4499, rating: 4.0, reviews: 21, badge: "new", features: ["256GB Storage", "64MP Camera", "Mediatek Helio G99"], image: "Tecno Camon 20 Pro.jpg"},
+            
+            // Tablets
+            {id: 9, name: "iPad Air 5th Gen", category: "tablets", price: 8999, originalPrice: 9499, rating: 4.7, reviews: 19, badge: "", features: ["64GB Storage", "M1 Chip", "10.9\" Display"], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80"},
+            {id: 10, name: "Samsung Galaxy Tab S8", category: "tablets", price: 10999, originalPrice: 11999, rating: 4.6, reviews: 14, badge: "best-seller", features: ["256GB Storage", "S Pen Included", "11\" Display"], image: "https://images.unsplash.com/photo-1527698266440-12104e498b76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 11, name: "Huawei MatePad 11", category: "tablets", price: 6499, originalPrice: 6999, rating: 4.3, reviews: 12, badge: "", features: ["128GB Storage", "2K Display", "HarmonyOS"], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80"},
+            {id: 12, name: "Lenovo Tab P11 Pro", category: "tablets", price: 7499, originalPrice: 7999, rating: 4.2, reviews: 8, badge: "sale", features: ["128GB Storage", "11.5\" OLED", "SD 730G"], image: "https://images.unsplash.com/photo-1595351968120-87e6d9d6b75e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            
+            // Accessories
+            {id: 13, name: "Wireless Earbuds Pro", category: "accessories", price: 499, originalPrice: 699, rating: 4.4, reviews: 42, badge: "best-seller", features: ["Noise Cancelling", "30hrs Battery", "Bluetooth 5.2"], image: "https://images.unsplash.com/photo-1590658268037-14bfaca6aec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 14, name: "65W Fast Charger", category: "accessories", price: 349, originalPrice: 499, rating: 4.5, reviews: 31, badge: "sale", features: ["GaN Technology", "Multi-Device", "Foldable Plug"], image: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80"},
+            {id: 15, name: "Premium Phone Case", category: "accessories", price: 199, originalPrice: 299, rating: 4.2, reviews: 56, badge: "", features: ["Shockproof", "Anti-Scratch", "Multiple Colors"], image: "https://images.unsplash.com/photo-1600086827875-7a26008f5b9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 16, name: "Tempered Glass Screen Protector", category: "accessories", price: 99, originalPrice: 149, rating: 4.3, reviews: 89, badge: "", features: ["9H Hardness", "Anti-Fingerprint", "Easy Installation"], image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 17, name: "Power Bank 20000mAh", category: "accessories", price: 599, originalPrice: 799, rating: 4.6, reviews: 27, badge: "best-seller", features: ["Fast Charging", "Dual Output", "LED Display"], image: "https://images.unsplash.com/photo-1605244476987-0d0e4f1aae7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 18, name: "Bluetooth Speaker", category: "accessories", price: 799, originalPrice: 999, rating: 4.5, reviews: 19, badge: "", features: ["360° Sound", "24hr Playtime", "IPX7 Waterproof"], image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80"},
+            {id: 19, name: "Smart Watch Series 5", category: "accessories", price: 1499, originalPrice: 1999, rating: 4.7, reviews: 23, badge: "new", features: ["Health Monitoring", "1.7\" AMOLED", "2 Week Battery"], image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80"},
+            {id: 20, name: "Car Phone Mount", category: "accessories", price: 149, originalPrice: 199, rating: 4.1, reviews: 37, badge: "", features: ["360° Rotation", "One-Touch Release", "Strong Grip"], image: "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"},
+            
+            // Additional products to reach 50
+            {id: 21, name: "Samsung Galaxy S22", category: "phones", price: 7499, originalPrice: 8999, rating: 4.4, reviews: 28, badge: "sale", features: ["128GB Storage", "Dynamic AMOLED", "Snapdragon 8"], image: "Samsung Galaxy S22.jpg"},
+            {id: 22, name: "iPhone 13", category: "phones", price: 8999, originalPrice: 9999, rating: 4.7, reviews: 45, badge: "", features: ["128GB Storage", "A15 Bionic", "Cinematic Mode"], image: "iPhone 13.jpg"},
+            {id: 23, name: "USB-C Fast Charging Cable", category: "accessories", price: 149, originalPrice: 199, rating: 4.3, reviews: 64, badge: "", features: ["3 Pack", "Nylon Braided", "6ft Length"], image: "auto=format&fit=crop&w=1964&q=80"},
+            {id: 24, name: "Wireless Charging Pad", category: "accessories", price: 299, originalPrice: 399, rating: 4.2, reviews: 22, badge: "sale", features: ["15W Fast Charge", "LED Indicator", "Non-Slip Surface"], image: "https://images.unsplash.com/photo-1605244476987-0d0e4f1aae7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 25, name: "Samsung Galaxy Z Flip 4", category: "phones", price: 11999, originalPrice: 12999, rating: 4.6, reviews: 17, badge: "new", features: ["256GB Storage", "Foldable Display", "Compact Design"], image: "https://images.unsplash.com/photo-1662925694995-4a2f1b0d02c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 26, name: "iPad Mini 6th Gen", category: "tablets", price: 7999, originalPrice: 8499, rating: 4.5, reviews: 16, badge: "", features: ["64GB Storage", "A15 Bionic", "8.3\" Display"], image: "https://images.unsplash.com/photo-1595351968120-87e6d9d6b75e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            {id: 27, name: "Gaming Controller", category: "accessories", price: 899, originalPrice: 1099, rating: 4.4, reviews: 11, badge: "new", features: ["Mobile Clip", "40hr Battery", "Customizable"], image: "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            {id: 28, name: "Phone Camera Lens Kit", category: "accessories", price: 349, originalPrice: 499, rating: 4.0, reviews: 18, badge: "", features: ["Wide/Macro/Fisheye", "Universal Clip", "Carrying Case"], image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 29, name: "Selfie Ring Light", category: "accessories", price: 249, originalPrice: 349, rating: 4.2, reviews: 26, badge: "", features: ["3 Color Modes", "Adjustable Brightness", "Tripod Included"], image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80"},
+            {id: 30, name: "Waterproof Phone Pouch", category: "accessories", price: 99, originalPrice: 149, rating: 4.1, reviews: 33, badge: "", features: ["Universal Size", "Touchscreen Compatible", "IPX8 Rating"], image: "https://images.unsplash.com/photo-1596526131083-e8c633c3d7a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            {id: 31, name: "OnePlus Nord CE 3", category: "phones", price: 4999, originalPrice: 5499, rating: 4.3, reviews: 19, badge: "new", features: ["256GB Storage", "120Hz Display", "80W Charging"], image: "https://images.unsplash.com/photo-1659789500111-1b9d8f2b7a1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 32, name: "Infinix Note 30 Pro", category: "phones", price: 3999, originalPrice: 4499, rating: 4.0, reviews: 14, badge: "", features: ["256GB Storage", "108MP Camera", "68W Charging"], image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"},
+            {id: 33, name: "Apple Watch SE", category: "accessories", price: 2999, originalPrice: 3499, rating: 4.6, reviews: 27, badge: "sale", features: ["Fitness Tracking", "Retina Display", "Water Resistant"], image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80"},
+            {id: 34, name: "Tablet Keyboard Case", category: "accessories", price: 799, originalPrice: 999, rating: 4.1, reviews: 9, badge: "", features: ["Bluetooth", "Backlit Keys", "Multi-Angle Stand"], image: "https://images.unsplash.com/photo-1595351968120-87e6d9d6b75e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            {id: 35, name: "Phone Grip Stand", category: "accessories", price: 149, originalPrice: 199, rating: 4.4, reviews: 42, badge: "best-seller", features: ["360° Rotation", "Strong Adhesive", "Multiple Colors"], image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80"},
+            {id: 36, name: "iPhone 11 (Refurbished)", category: "phones", price: 5299, originalPrice: 6999, rating: 4.2, reviews: 22, badge: "refurbished", features: ["128GB Storage", "A13 Bionic", "12MP Camera"], image: "https://images.unsplash.com/photo-1598327105666-5b893731aff6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 37, name: "Samsung Galaxy Tab A8", category: "tablets", price: 4999, originalPrice: 5499, rating: 4.0, reviews: 11, badge: "", features: ["64GB Storage", "10.5\" Display", "7040mAh Battery"], image: "https://images.unsplash.com/photo-1527698266440-12104e498b76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 38, name: "Portable SSD 1TB", category: "accessories", price: 1499, originalPrice: 1999, rating: 4.8, reviews: 15, badge: "new", features: ["USB-C", "1050MB/s Read", "Shock Resistant"], image: "https://images.unsplash.com/photo-1581093450021-4a7360e9a7f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 39, name: "AirPods Pro 2", category: "accessories", price: 2499, originalPrice: 2999, rating: 4.7, reviews: 34, badge: "best-seller", features: ["Active Noise Cancellation", "Spatial Audio", "MagSafe Charging"], image: "https://images.unsplash.com/photo-1590658268037-14bfaca6aec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 40, name: "Multi-Port USB Hub", category: "accessories", price: 399, originalPrice: 499, rating: 4.3, reviews: 21, badge: "", features: ["4K HDMI", "USB 3.0", "SD Card Reader"], image: "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            {id: 41, name: "Samsung Galaxy S21 FE", category: "phones", price: 6499, originalPrice: 7499, rating: 4.4, reviews: 27, badge: "sale", features: ["256GB Storage", "120Hz Display", "Snapdragon 888"], image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"},
+            {id: 42, name: "Xiaomi Pad 6", category: "tablets", price: 6999, originalPrice: 7999, rating: 4.5, reviews: 13, badge: "new", features: ["128GB Storage", "11\" 144Hz Display", "Snapdragon 870"], image: "https://images.unsplash.com/photo-1595351968120-87e6d9d6b75e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            {id: 43, name: "Magnetic Car Charger", category: "accessories", price: 299, originalPrice: 399, rating: 4.2, reviews: 18, badge: "", features: ["15W Fast Charge", "Strong Magnet", "Auto-Clamping"], image: "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"},
+            {id: 44, name: "Phone Cleaning Kit", category: "accessories", price: 99, originalPrice: 149, rating: 4.1, reviews: 27, badge: "", features: ["Microfiber Cloth", "Cleaning Solution", "Brush Set"], image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 45, name: "Smartphone Gimbal", category: "accessories", price: 1299, originalPrice: 1699, rating: 4.6, reviews: 9, badge: "sale", features: ["3-Axis Stabilization", "Object Tracking", "12hr Battery"], image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 46, name: "iPhone SE (Refurbished)", category: "phones", price: 3999, originalPrice: 5499, rating: 4.1, reviews: 16, badge: "refurbished", features: ["64GB Storage", "A15 Bionic", "Touch ID"], image: "https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"},
+            {id: 47, name: "Tablet Stand Holder", category: "accessories", price: 199, originalPrice: 299, rating: 4.3, reviews: 14, badge: "", features: ["Adjustable Angles", "Sturdy Base", "Fits 7-12\" Tablets"], image: "https://images.unsplash.com/photo-1595351968120-87e6d9d6b75e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"},
+            {id: 48, name: "Noise Cancelling Headphones", category: "accessories", price: 1499, originalPrice: 1999, rating: 4.7, reviews: 25, badge: "best-seller", features: ["30hr Battery", "Foldable Design", "Comfort Fit"], image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80"},
+            {id: 49, name: "Smartphone Tripod", category: "accessories", price: 299, originalPrice: 399, rating: 4.0, reviews: 12, badge: "", features: ["Extendable to 60\"", "Bluetooth Remote", "Universal Holder"], image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80"},
+            {id: 50, name: "Wireless Charging Car Mount", category: "accessories", price: 599, originalPrice: 799, rating: 4.4, reviews: 17, badge: "new", features: ["15W Fast Charge", "Auto-Sensing Clamp", "360° Rotation"], image: "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"}
+        ];
+
+        // Generate product cards
+        const productsGrid = document.getElementById('productsGrid');
+        
+        products.forEach(product => {
+            const discount = product.originalPrice ? 
+                Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+            
+            const badgeClass = product.badge ? 
+                product.badge.replace(/\s+/g, '-') : '';
+            
+            const badgeText = product.badge ? 
+                product.badge.charAt(0).toUpperCase() + product.badge.slice(1) : '';
+            
+            const productCard = `
+                <div class="product-card" data-category="${product.category}">
+                    ${product.badge ? `<div class="product-badge ${badgeClass}">${badgeText}</div>` : ''}
+                    
+                    <div class="product-img">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <div class="product-category">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</div>
+                      <div class="product-rating">
+                            ${generateStars(product.rating)}
+                            <span>(${product.reviews})</span>
+                        </div>
+                        
+                        <div class="product-price">
+                            <span class="current-price">ZMW ${product.price.toLocaleString()}</span>
+                            ${product.originalPrice ? `<span class="original-price">ZMW ${product.originalPrice.toLocaleString()}</span>` : ''}
+                            ${discount > 0 ? `<span class="discount">-${discount}%</span>` : ''}
+                        </div>
+                        
+                        <div class="product-features">
+                            <ul>
+                                ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn btn-outline btn-wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            productsGrid.innerHTML += productCard;
+        });
+        
+        // Generate star rating HTML
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            
+            return stars;
+        }
+        
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                const productCards = document.querySelectorAll('.product-card');
+                
+                productCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Pagination functionality
+        const pageButtons = document.querySelectorAll('.page-btn');
+        
+        pageButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                pageButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // In a real implementation, this would load the next page of products
+                // For this demo, we'll just show an alert
+                const pageNum = button.textContent;
+                alert(`Loading page ${pageNum}... In a real implementation, this would fetch the next set of products.`);
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('keyup', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
